@@ -16,7 +16,7 @@
 
         public void Resolve()
         {
-            var res = new TestEntityClass<TestClass>(new { Res = 10 });
+            var res = new TestEntityClass<TestSimpleClass>(new { Res = 10 });
         }
     }
 }

@@ -2,10 +2,11 @@
 {
     public enum NumericFilterMatchMode
     {
-        Equals,
-        LessThan,
-        GreaterThan,
-        LessThanOrEquals,
-        GreaterThanOrEquals,
+        Equals = 10,
+        NotEquals = 20,
+        LessThan = 30,
+        GreaterThan = 40,
+        LessThanOrEquals = 50,
+        GreaterThanOrEquals = 60,
     }
 }

@@ -24,24 +24,31 @@ namespace ITFCode.Core.Service.FilterHandlers
             string methodName;
             switch (Filter.MatchMode)
             {
-                case StringFilterMatchMode.Contains:
-                    var isNotNullExpression = Expression.NotEqual(property, Expression.Constant(null));
-                    var checkContainsExpression = Expression.Call(property, "Contains", null, value);
-                    var notNullAndContainsExpression = Expression.AndAlso(isNotNullExpression, checkContainsExpression);
-                    return Expression.Lambda<Func<TEntity, bool>>(notNullAndContainsExpression, item);
-
+                case StringFilterMatchMode.Equals:
+                    methodName = "Equals";
+                    break;
                 case StringFilterMatchMode.StartsWith:
                     methodName = "StartsWith";
                     break;
                 case StringFilterMatchMode.EndsWith:
                     methodName = "EndsWith";
                     break;
+                case StringFilterMatchMode.NotEquals:
+                    throw new ArgumentOutOfRangeException($"Rule not defined for '{Filter.MatchMode}'");
+                    //var notEqualExpression = Expression.NotEqual(property, Expression.Constant(value));
+                    //return Expression.Lambda<Func<TEntity, bool>>(notEqualExpression, item);
+                case StringFilterMatchMode.Contains:
+                    var isNotNullExpression = Expression.NotEqual(property, Expression.Constant(null));
+                    var checkContainsExpression = Expression.Call(property, "Contains", null, value);
+                    var notNullAndContainsExpression = Expression.AndAlso(isNotNullExpression, checkContainsExpression);
+                    return Expression.Lambda<Func<TEntity, bool>>(notNullAndContainsExpression, item);
                 default:
-                    methodName = "Equals";
-                    break;
+                    throw new ArgumentOutOfRangeException($"Rule not defined for '{Filter.MatchMode}'");
             }
 
-            var method = typeof(string).GetMethod(methodName, new Type[] { typeof(string) });
+            var method = typeof(string).GetMethod(methodName, new Type[] { typeof(string) }) 
+                ?? throw new NullReferenceException($"Method '{methodName}' not found in type String");
+
             var body = Expression.Call(property, method, value);
 
             return Expression.Lambda<Func<TEntity, bool>>(body, item);

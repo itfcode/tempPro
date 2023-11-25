@@ -20,12 +20,12 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
             var dateFilter = new DateRangeFilter
             {
-                PropertyName = nameof(TestClass.DateTimeProperty),
+                PropertyName = nameof(TestSimpleClass.DateTimeProperty),
                 From = value0,
                 To = value1
             };
 
-            var expr = new DateRangeFilterHandler(dateFilter).Handle<TestClass>();
+            var expr = new DateRangeFilterHandler(dateFilter).Handle<TestSimpleClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)
@@ -51,12 +51,12 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
             var dateFilter = new DateRangeFilter
             {
-                PropertyName = nameof(TestClass.DateTimeProperty),
+                PropertyName = nameof(TestSimpleClass.DateTimeProperty),
                 From = value0,
                 To = value1
             };
 
-            var expr = new DateRangeFilterHandler(dateFilter).Handle<TestClass>();
+            var expr = new DateRangeFilterHandler(dateFilter).Handle<TestSimpleClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)
@@ -82,12 +82,12 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
             var dateFilter = new DateRangeFilter
             {
-                PropertyName = nameof(TestClass.DateTimeProperty),
+                PropertyName = nameof(TestSimpleClass.DateTimeProperty),
                 From = value0,
                 To = value1
             };
 
-            var expr = new DateRangeFilterHandler(dateFilter).Handle<TestClass>();
+            var expr = new DateRangeFilterHandler(dateFilter).Handle<TestSimpleClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)
@@ -113,12 +113,12 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
             var dateFilter = new DateRangeFilter
             {
-                PropertyName = nameof(TestClass.DateTimeProperty),
+                PropertyName = nameof(TestSimpleClass.DateTimeProperty),
                 From = value0,
                 To = value1
             };
 
-            var expr = new DateRangeFilterHandler(dateFilter).Handle<TestClass>();
+            var expr = new DateRangeFilterHandler(dateFilter).Handle<TestSimpleClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)

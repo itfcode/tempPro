@@ -16,7 +16,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             var testValues = GenerateData(count);
 
-            var getValue = (TestClass x) => x.DateTimeProperty;
+            var getValue = (TestSimpleClass x) => x.DateTimeProperty;
 
             var value0 = getValue(testValues.Skip(position - 1).First());
             var value1 = getValue(testValues.Skip(position).First());
@@ -26,11 +26,11 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
             var dateFilter = new DateListFilter
             {
-                PropertyName = nameof(TestClass.DateTimeProperty),
+                PropertyName = nameof(TestSimpleClass.DateTimeProperty),
                 Values = values.Select(x => new DateTimeOffset(x)).ToList()
             };
 
-            var expr = new DateListFilterHandler(dateFilter).Handle<TestClass>();
+            var expr = new DateListFilterHandler(dateFilter).Handle<TestSimpleClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)
@@ -50,7 +50,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             var testValues = GenerateData(count);
 
-            var getValue = (TestClass x) => x.DateTimeNullProperty;
+            var getValue = (TestSimpleClass x) => x.DateTimeNullProperty;
 
             var value0 = getValue(testValues.Skip(position - 1).First());
             var value1 = getValue(testValues.Skip(position).First());
@@ -60,11 +60,11 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
             var dateFilter = new DateListFilter
             {
-                PropertyName = nameof(TestClass.DateTimeNullProperty),
+                PropertyName = nameof(TestSimpleClass.DateTimeNullProperty),
                 Values = values.Select(x => new DateTimeOffset(x.Value)).ToList()
             };
 
-            var expr = new DateListFilterHandler(dateFilter).Handle<TestClass>();
+            var expr = new DateListFilterHandler(dateFilter).Handle<TestSimpleClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)
@@ -84,7 +84,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             var testValues = GenerateData(count);
 
-            var getValue = (TestClass x) => x.DateTimeOffsetProperty;
+            var getValue = (TestSimpleClass x) => x.DateTimeOffsetProperty;
 
             var value0 = getValue(testValues.Skip(position - 1).First());
             var value1 = getValue(testValues.Skip(position).First());
@@ -94,11 +94,11 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
             var dateFilter = new DateListFilter
             {
-                PropertyName = nameof(TestClass.DateTimeOffsetProperty),
+                PropertyName = nameof(TestSimpleClass.DateTimeOffsetProperty),
                 Values = values.Select(x => x).ToList()
             };
 
-            var expr = new DateListFilterHandler(dateFilter).Handle<TestClass>();
+            var expr = new DateListFilterHandler(dateFilter).Handle<TestSimpleClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)
@@ -118,7 +118,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             var testValues = GenerateData(count);
 
-            var getValue = (TestClass x) => x.DateTimeOffsetNullProperty;
+            var getValue = (TestSimpleClass x) => x.DateTimeOffsetNullProperty;
 
             var value0 = getValue(testValues.Skip(position - 1).First());
             var value1 = getValue(testValues.Skip(position).First());
@@ -128,11 +128,11 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
             var dateFilter = new DateListFilter
             {
-                PropertyName = nameof(TestClass.DateTimeOffsetNullProperty),
+                PropertyName = nameof(TestSimpleClass.DateTimeOffsetNullProperty),
                 Values = values.Select(x => x.Value).ToList()
             };
 
-            var expr = new DateListFilterHandler(dateFilter).Handle<TestClass>();
+            var expr = new DateListFilterHandler(dateFilter).Handle<TestSimpleClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)

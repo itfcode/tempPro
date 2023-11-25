@@ -14,10 +14,12 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
     {
         #region Consts
 
-        protected const int STEP_1 = 5;
-        protected const int STEP_2 = 50;
-        protected const int STEP_3 = 200;
-        protected const int STEP_4 = 1000;
+        protected const int STEP_0 = 0;
+        protected const int STEP_1 = 1;
+        protected const int STEP_2 = 5;
+        protected const int STEP_3 = 50;
+        protected const int STEP_4 = 200;
+        protected const int STEP_5 = 1000;
 
         protected const string Property_DateTimeOffset = nameof(BoolValueFilter.Value);
 
@@ -49,20 +51,28 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
         #region Protected Methods 
 
-        protected ICollection<TestClass> GenerateData(int count)
+        protected ICollection<TestSimpleClass> GenerateData(int count)
         {
             decimal generateDecimal() => new(new Random().Next() + new Random().NextDouble());
             double generateDouble() => new Random().Next() + new Random().NextDouble();
             float generateFloat() => new Random().Next() + new Random().NextSingle();
 
             return Enumerable.Range(0, count)
-                .Select(x => _fixture.Build<TestClass>()
+                .Select(x => _fixture.Build<TestSimpleClass>()
                     .With(p => p.FloatProperty, generateFloat())
                     .With(p => p.FloatNullProperty, generateFloat())
                     .With(p => p.DoubleProperty, generateDouble())
                     .With(p => p.DoubleNullProperty, generateDouble())
                     .With(p => p.DecimalProperty, generateDecimal())
                     .With(p => p.DecimalNullProperty, new decimal(new Random().Next(-1000000, 1000000) + new Random().NextDouble()))
+                    .Create())
+                .ToList();
+        }
+
+        protected ICollection<TestComplexClass> GenerateComplexData(int count)
+        {
+            return Enumerable.Range(0, count)
+                .Select(x => _fixture.Build<TestComplexClass>()
                     .Create())
                 .ToList();
         }

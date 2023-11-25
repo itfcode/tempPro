@@ -1,6 +1,6 @@
 ﻿namespace ITFCode.Core.Service.Tests.TestData
 {
-    public class TestClass
+    public class TestSimpleClass
     {
         #region Boolean Types
 
@@ -11,7 +11,7 @@
 
         #region String Type
 
-        public string? StringProperty { get; set; }
+        public string StringProperty { get; set; }
 
         #endregion
 
