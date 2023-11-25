@@ -16,11 +16,15 @@ namespace ITFCode.Core.Service.FilterHandlers.Base
 
         protected Expression<Func<TEntity, bool>> HandleValue<TEntity, TValue>()
         {
-            var item = Expression.Parameter(typeof(TEntity), "item");
-            var property = GetProperty(item, Filter.PropertyName);
-            var value = GetValue((Filter as FilterValueOption<TValue>).Value, property.Type);
+            var itemExpr = Expression.Parameter(typeof(TEntity), "item");
+            var propertyExpr = GetProperty(itemExpr, Filter.PropertyName);
 
-            return Expression.Lambda<Func<TEntity, bool>>(Expression.Equal(property, value), item);
+            var filterOption = (Filter as FilterValueOption<TValue>)
+                ?? throw new NullReferenceException($"Filter value cannot be defined");
+
+            var valueExpr = GetValue(filterOption.Value, propertyExpr.Type);
+
+            return Expression.Lambda<Func<TEntity, bool>>(Expression.Equal(propertyExpr, valueExpr), itemExpr);
         }
 
         #endregion

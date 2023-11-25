@@ -182,7 +182,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             int position = count / 2;
 
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
             var value = getValue(testValues.Skip(position).First());
 
             var filter = new NumericValueFilter

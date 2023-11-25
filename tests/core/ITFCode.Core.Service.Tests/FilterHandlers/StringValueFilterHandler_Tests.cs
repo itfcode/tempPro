@@ -39,7 +39,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             int position = count / 2;
 
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
             var value = testValues.Count > 0 
                 ? testValues.Skip(position).First().StringProperty
                 : _fixture.Create<string>();

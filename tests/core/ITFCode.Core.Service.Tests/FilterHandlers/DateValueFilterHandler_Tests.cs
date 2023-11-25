@@ -15,7 +15,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             DateTime getValue(TestSimpleClass x) => x.DateTimeProperty;
 
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
             var value = getValue(testValues.Skip(position - 1).First());
 
             var dateFilter = new DateValueFilter
@@ -44,7 +44,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             DateTime getValue(TestSimpleClass x) => x.DateTimeNullProperty ?? throw new NullReferenceException();
 
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
             var value = getValue(testValues.Skip(position - 1).First());
 
             var dateFilter = new DateValueFilter
@@ -73,7 +73,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             DateTimeOffset getValue(TestSimpleClass x) => x.DateTimeOffsetProperty;
 
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
             var value = getValue(testValues.Skip(position - 1).First());
 
             var dateFilter = new DateValueFilter
@@ -102,7 +102,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         {
             DateTimeOffset getValue(TestSimpleClass x) => x.DateTimeOffsetNullProperty ?? throw new NullReferenceException();
 
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
             var value = getValue(testValues.Skip(position - 1).First());
 
             var dateFilter = new DateValueFilter

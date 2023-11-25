@@ -14,7 +14,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         [InlineData(STEP_4, 500)]
         public void Handle_DateTime_Test(int count, int position)
         {
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
 
             var getValue = (TestSimpleClass x) => x.DateTimeProperty;
 
@@ -48,7 +48,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         [InlineData(STEP_4, 500)]
         public void Handle_DateTimeNull_Test(int count, int position)
         {
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
 
             var getValue = (TestSimpleClass x) => x.DateTimeNullProperty;
 
@@ -82,7 +82,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         [InlineData(STEP_4, 500)]
         public void Handle_DateTimeOffset_Test(int count, int position)
         {
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
 
             var getValue = (TestSimpleClass x) => x.DateTimeOffsetProperty;
 
@@ -116,7 +116,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         [InlineData(STEP_4, 500)]
         public void Handle_DateTimeOffsetNull_Test(int count, int position)
         {
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
 
             var getValue = (TestSimpleClass x) => x.DateTimeOffsetNullProperty;
 

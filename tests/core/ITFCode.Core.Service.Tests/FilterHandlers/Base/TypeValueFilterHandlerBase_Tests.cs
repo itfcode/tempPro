@@ -51,7 +51,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 
         #region Protected Methods 
 
-        protected ICollection<TestSimpleClass> GenerateData(int count)
+        protected ICollection<TestSimpleClass> GenerateSimpleData(int count)
         {
             decimal generateDecimal() => new(new Random().Next() + new Random().NextDouble());
             double generateDouble() => new Random().Next() + new Random().NextDouble();

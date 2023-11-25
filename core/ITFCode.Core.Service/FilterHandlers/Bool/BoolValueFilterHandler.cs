@@ -16,7 +16,13 @@ namespace ITFCode.Core.Service.FilterHandlers
 
         public override Expression<Func<TEntity, bool>> Handle<TEntity>()
         {
-            return HandleValue<TEntity, bool>();
+            switch (Filter.MatchMode)
+            {
+                case BoolFilterMatchMode.Equals:
+                    return HandleValue<TEntity, bool>();
+                default:
+                    throw new ArgumentOutOfRangeException($"Rule not defined for '{Filter.MatchMode}'");
+            }
         }
 
         #endregion

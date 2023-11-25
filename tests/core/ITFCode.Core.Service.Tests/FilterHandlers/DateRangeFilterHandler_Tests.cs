@@ -13,7 +13,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         [InlineData(STEP_4, 500)]
         public void Handle_DateTime_Test(int count, int position)
         {
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
 
             var value0 = testValues.Skip(position - 1).First().DateTimeProperty;
             var value1 = testValues.Skip(position + 2).First().DateTimeProperty;
@@ -44,7 +44,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         [InlineData(STEP_4, 500)]
         public void Handle_DateTimeNull_Test(int count, int position)
         {
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
 
             var value0 = testValues.Skip(position - 1).First().DateTimeProperty;
             var value1 = testValues.Skip(position + 2).First().DateTimeProperty;
@@ -75,7 +75,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         [InlineData(STEP_4, 500)]
         public void Handle_DateTimeOffset_Test(int count, int position)
         {
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
 
             var value0 = testValues.Skip(position - 1).First().DateTimeProperty;
             var value1 = testValues.Skip(position + 2).First().DateTimeProperty;
@@ -106,7 +106,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         [InlineData(STEP_4, 500)]
         public void Handle_DateTimeOffsetNull_Test(int count, int position)
         {
-            var testValues = GenerateData(count);
+            var testValues = GenerateSimpleData(count);
 
             var value0 = testValues.Skip(position - 1).First().DateTimeProperty;
             var value1 = testValues.Skip(position + 2).First().DateTimeProperty;
