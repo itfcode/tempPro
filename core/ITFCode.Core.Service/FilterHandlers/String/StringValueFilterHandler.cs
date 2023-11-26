@@ -33,16 +33,13 @@ namespace ITFCode.Core.Service.FilterHandlers
                 case StringFilterMatchMode.EndsWith:
                     methodName = "EndsWith";
                     break;
-                case StringFilterMatchMode.NotEquals:
-                    throw new ArgumentOutOfRangeException($"Rule not defined for '{Filter.MatchMode}'");
-                    //var notEqualExpression = Expression.NotEqual(property, Expression.Constant(value));
-                    //return Expression.Lambda<Func<TEntity, bool>>(notEqualExpression, item);
                 case StringFilterMatchMode.Contains:
                     var isNotNullExpression = Expression.NotEqual(property, Expression.Constant(null));
                     var checkContainsExpression = Expression.Call(property, "Contains", null, value);
                     var notNullAndContainsExpression = Expression.AndAlso(isNotNullExpression, checkContainsExpression);
                     return Expression.Lambda<Func<TEntity, bool>>(notNullAndContainsExpression, item);
-                default:
+                case StringFilterMatchMode.NotEquals:
+                default:                                                                                                                                                                                                                             
                     throw new ArgumentOutOfRangeException($"Rule not defined for '{Filter.MatchMode}'");
             }
 
