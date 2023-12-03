@@ -2,22 +2,24 @@
 using ITFCode.Core.Service.FilterHandlers;
 using ITFCode.Core.Service.Tests.TestData;
 
-namespace ITFCode.Core.Service.Tests.FilterHandlers.Bool
+namespace ITFCode.Core.Service.Tests.FilterHandlers
 {
     public class BoolValueFilterHandler_Tests : BaseValueFilterHandlerBase_Tests<BoolValueFilterHandler, BoolValueFilter>
     {
+        #region Facts
+
         [Theory, MemberData(nameof(TestData))]
-        public void Handle_Test(int count, BoolFilterMatchMode matchMode, bool value)
+        public void Handle_Test(int itemCount, BoolFilterMatchMode matchMode, bool value)
         {
-            ExecuteSimpleTest(
-                count: count,
+            ExecuteTest(
+                items: GenerateSimpleData(itemCount),
                 propertyName: nameof(TestSimpleClass.BoolProperty),
                 matchMode: matchMode,
                 value: value,
                 valueGetter: x => x.BoolProperty);
 
-            ExecuteComplexTest(
-                count: count,
+            ExecuteTest(
+                items: GenerateComplexData(itemCount),
                 propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.BoolProperty)}",
                 matchMode: matchMode,
                 value: value,
@@ -25,22 +27,24 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.Bool
         }
 
         [Theory, MemberData(nameof(TestData))]
-        public void Handle_Nullable_Test(int count, BoolFilterMatchMode matchMode, bool value)
+        public void Handle_Nullable_Test(int itemCount, BoolFilterMatchMode matchMode, bool value)
         {
-            ExecuteSimpleTest(
-                count: count,
+            ExecuteTest(
+                items: GenerateSimpleData(itemCount),
                 propertyName: nameof(TestSimpleClass.BoolNullProperty),
                 matchMode: matchMode,
                 value: value,
                 valueGetter: x => x.BoolNullProperty ?? throw new NullReferenceException());
 
-            ExecuteComplexTest(
-                count: count,
+            ExecuteTest(
+                items: GenerateComplexData(itemCount),
                 propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.BoolNullProperty)}",
                 matchMode: matchMode,
                 value: value,
                 valueGetter: x => x.Property1.BoolNullProperty ?? throw new NullReferenceException());
         }
+
+        #endregion
 
         #region Test Data
 
@@ -58,9 +62,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.Bool
 
         #region Private Methods 
 
-        private void ExecuteSimpleTest(int count, string propertyName, BoolFilterMatchMode matchMode, bool value, Func<TestSimpleClass, bool> valueGetter)
+        private static void ExecuteTest<TClass>(ICollection<TClass> items, string propertyName, BoolFilterMatchMode matchMode, bool value, Func<TClass, bool> valueGetter)
         {
-            var testValues = GenerateSimpleData(count);
+            var testValues = items.ToList();
 
             var filter = new BoolValueFilter
             {
@@ -69,30 +73,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.Bool
                 MatchMode = matchMode
             };
 
-            var expr = new BoolValueFilterHandler(filter).Handle<TestSimpleClass>();
-
-            var filtered = testValues.AsQueryable()
-                .Where(expr)
-                .ToList();
-
-            var expectedCount = testValues.Count(x => CheckValueComparasion(valueGetter(x), value, matchMode));
-
-            Assert.Equal(expectedCount, filtered.Count);
-            Assert.True(filtered.All(x => CheckValueComparasion(valueGetter(x), value, matchMode)));
-        }
-
-        private void ExecuteComplexTest(int count, string propertyName, BoolFilterMatchMode matchMode, bool value, Func<TestComplexClass, bool> valueGetter)
-        {
-            var testValues = GenerateComplexData(count);
-
-            var filter = new BoolValueFilter
-            {
-                PropertyName = propertyName,
-                Value = value,
-                MatchMode = matchMode
-            };
-
-            var expr = new BoolValueFilterHandler(filter).Handle<TestComplexClass>();
+            var expr = new BoolValueFilterHandler(filter).Handle<TClass>();
 
             var filtered = testValues.AsQueryable()
                 .Where(expr)

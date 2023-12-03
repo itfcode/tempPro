@@ -23,7 +23,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
                 propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.StringProperty)}",
                 matchMode: matchMode,
                 valueGetter: x => x.Property1.StringProperty);
-        }                                                                                                                                                                                            /
+        }                                                                                                                                                                                            
 
         #endregion
 
