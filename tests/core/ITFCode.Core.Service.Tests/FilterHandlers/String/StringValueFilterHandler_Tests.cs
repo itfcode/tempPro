@@ -33,7 +33,6 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
             (new StringFilterMatchMode[]
             {
                 StringFilterMatchMode.Equals,
-                //StringFilterMatchMode.NotEquals,
                 StringFilterMatchMode.Contains,
                 StringFilterMatchMode.StartsWith,
                 StringFilterMatchMode.EndsWith,
@@ -78,7 +77,6 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
             => matchMode switch
             {
                 StringFilterMatchMode.Equals => source.Equals(value, StringComparison.InvariantCultureIgnoreCase),
-                //StringFilterMatchMode.NotEquals => !source.Equals(value, StringComparison.InvariantCultureIgnoreCase),
                 StringFilterMatchMode.StartsWith => source.StartsWith(value, StringComparison.InvariantCultureIgnoreCase),
                 StringFilterMatchMode.EndsWith => source.EndsWith(value, StringComparison.InvariantCultureIgnoreCase),
                 StringFilterMatchMode.Contains => source.Contains(value, StringComparison.InvariantCultureIgnoreCase),

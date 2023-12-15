@@ -3,12 +3,13 @@ using ITFCode.Core.DTO.FilterOptions;
 using ITFCode.Core.Service.FilterHandlers;
 using ITFCode.Core.Service.FilterHandlers.Base;
 using ITFCode.Core.Service.Tests.TestData;
+using System;
 using System.Reflection;
 
 namespace ITFCode.Core.Service.Tests.FilterHandlers
 {
-    public abstract class BaseValueFilterHandlerBase_Tests<TValueFilterHandler, TFilter>
-        where TValueFilterHandler : class
+    public abstract class BaseListFilterHandlerBase_Tests<TListFilterHandler, TFilter>
+        where TListFilterHandler : class
         where TFilter : class
     {
         #region Consts
@@ -36,7 +37,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         public void Constructor_Throw_If_Parameter_Is_Null()
         {
             TFilter? filter = default;
-            var exception = Assert.Throws<TargetInvocationException>(() => Activator.CreateInstance(typeof(TValueFilterHandler), filter));
+            var exception = Assert.Throws<TargetInvocationException>(() => Activator.CreateInstance(typeof(TListFilterHandler), filter));
             Assert.IsType<ArgumentNullException>(exception.InnerException);
         }
 

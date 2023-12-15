@@ -2,7 +2,7 @@
 {
     public class TestComplexClass
     {
-        public TestSimpleClass Property1 { get; set; }
-        public TestSimpleClass Property2 { get; set; }
+        public TestSimpleClass Property1 { get; set; } = new TestSimpleClass();
+        public TestSimpleClass Property2 { get; set; } = new TestSimpleClass();
     }
 }

@@ -52,7 +52,6 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
             (new BoolFilterMatchMode[]
             {
                 BoolFilterMatchMode.Equals,
-                //BoolFilterMatchMode.NotEquals,
             })
             .SelectMany(x => (new int[] { STEP_0, STEP_1, STEP_4 }).Select(y => new object[] { y, x }))
             .SelectMany(x => (new bool[] { false, true }).Select(y => new object[] { x[0], x[1], y }))

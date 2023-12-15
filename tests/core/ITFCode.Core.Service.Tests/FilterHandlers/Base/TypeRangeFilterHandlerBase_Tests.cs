@@ -7,8 +7,8 @@ using System.Reflection;
 
 namespace ITFCode.Core.Service.Tests.FilterHandlers
 {
-    public abstract class BaseValueFilterHandlerBase_Tests<TValueFilterHandler, TFilter>
-        where TValueFilterHandler : class
+    public abstract class BaseRangeFilterHandlerBase_Tests<TRangeFilterHandler, TFilter>
+        where TRangeFilterHandler : class
         where TFilter : class
     {
         #region Consts
@@ -36,7 +36,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         public void Constructor_Throw_If_Parameter_Is_Null()
         {
             TFilter? filter = default;
-            var exception = Assert.Throws<TargetInvocationException>(() => Activator.CreateInstance(typeof(TValueFilterHandler), filter));
+            var exception = Assert.Throws<TargetInvocationException>(() => Activator.CreateInstance(typeof(TRangeFilterHandler), filter));
             Assert.IsType<ArgumentNullException>(exception.InnerException);
         }
 

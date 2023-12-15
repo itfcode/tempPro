@@ -5,5 +5,6 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
 {
     public class StringListFilterHandler_Tests : BaseValueFilterHandlerBase_Tests<StringListFilterHandler, StringListFilter>
     {
+
     }
 }

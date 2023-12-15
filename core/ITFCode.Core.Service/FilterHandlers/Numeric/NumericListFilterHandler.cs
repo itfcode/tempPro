@@ -1,4 +1,5 @@
 ﻿using ITFCode.Core.DTO.FilterOptions;
+using ITFCode.Core.DTO.FilterOptions.Base;
 using ITFCode.Core.Service.FilterHandlers.Base;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -18,17 +19,20 @@ namespace ITFCode.Core.Service.FilterHandlers
         public override Expression<Func<TEntity, bool>> Handle<TEntity>()
         {
             var item = Expression.Parameter(typeof(TEntity), "item");
-            var value = Expression.Property(item, Filter.PropertyName);
+            var property = GetProperty(item, Filter.PropertyName);
 
-            var parameters = GetMethodAndList(value.Type);
+            var cort = GetMethodAndList(property.Type);
 
-            MethodInfo? methodInfo = parameters.Item1;
-            ConstantExpression? list = parameters.Item2;
+            MethodInfo? methodInfo = cort.Method;
+            ConstantExpression? list = cort.Constant;
+
+            //MethodInfo? methodInfo = typeof(List<double>).GetMethod("Contains", new Type[] { typeof(double) });
+            //ConstantExpression? list = Expression.Constant(filterValues);
 
             if (methodInfo is null)
-                throw new NullReferenceException($"Method List.Contains not defined for type {value.Type.Name}");
+                throw new NullReferenceException($"Method List.Contains not defined for type 'double'");
 
-            var body = Expression.Call(list, methodInfo, value);
+            var body = Expression.Call(list, methodInfo, property);
 
             return Expression.Lambda<Func<TEntity, bool>>(body, item);
         }
@@ -37,49 +41,59 @@ namespace ITFCode.Core.Service.FilterHandlers
 
         #region Private Method
 
-        public MethodInfo? GetMethod<T>()
+        protected virtual List<TValue> GetFilterValues<TValue>()
+        {
+            return (Filter as FilterListOption<TValue>)?.Values ?? throw new NullReferenceException("Cannot get list of values");
+        }
+
+        public MethodInfo? GetMethod<T>() 
         {
             return typeof(List<T>).GetMethod("Contains", new Type[] { typeof(T) });
         }
 
-        public ConstantExpression? GetList<TValue>(Func<double, TValue> selector)
+        public ConstantExpression? GetConstantList<TValue>(Func<double, TValue> selector)
         {
             return Expression.Constant(Filter.Values.Select(selector).ToList());
         }
 
-        private (MethodInfo?, ConstantExpression?) GetMethodAndList(Type type)
+        private (MethodInfo? Method, ConstantExpression? Constant) GetMethodAndList(Type type)
         {
-            if (type == typeof(int)) return (GetMethod<int>(), GetList(x => (int)x));
-            if (type == typeof(int?)) return (GetMethod<int?>(), GetList(x => (int?)x));
-            if (type == typeof(uint)) return (GetMethod<int>(), GetList(x => (uint)x));
-            if (type == typeof(uint?)) return (GetMethod<uint?>(), GetList(x => (uint?)x));
+            if (type == typeof(int)) return (GetMethod<int>(), GetConstantList(x => (int)x));
+            if (type == typeof(int?)) return (GetMethod<int?>(), GetConstantList(x => (int?)x));
 
-            if (type == typeof(long)) return (GetMethod<long>(), GetList(x => (long)x));
-            if (type == typeof(long?)) return (GetMethod<long?>(), GetList(x => (long?)x));
-            if (type == typeof(ulong)) return (GetMethod<ulong>(), GetList(x => (ulong)x));
-            if (type == typeof(ulong?)) return (GetMethod<ulong?>(), GetList(x => (ulong?)x));
+            if (type == typeof(uint)) return (GetMethod<int>(), GetConstantList(x => (uint)x));
+            if (type == typeof(uint?)) return (GetMethod<uint?>(), GetConstantList(x => (uint?)x));
 
-            if (type == typeof(byte)) return (GetMethod<byte>(), GetList(x => (byte)x));
-            if (type == typeof(byte?)) return (GetMethod<byte?>(), GetList(x => (byte?)x));
-            if (type == typeof(sbyte)) return (GetMethod<sbyte>(), GetList(x => (sbyte)x));
-            if (type == typeof(sbyte?)) return (GetMethod<sbyte?>(), GetList(x => (sbyte?)x));
+            if (type == typeof(long)) return (GetMethod<long>(), GetConstantList(x => (long)x));
+            if (type == typeof(long?)) return (GetMethod<long?>(), GetConstantList(x => (long?)x));
 
-            if (type == typeof(short)) return (GetMethod<short>(), GetList(x => (short)x));
-            if (type == typeof(short?)) return (GetMethod<short?>(), GetList(x => (short?)x));
-            if (type == typeof(ushort)) return (GetMethod<ushort>(), GetList(x => (ushort)x));
-            if (type == typeof(ushort?)) return (GetMethod<ushort?>(), GetList(x => (ushort?)x));
+            if (type == typeof(ulong)) return (GetMethod<ulong>(), GetConstantList(x => (ulong)x));
+            if (type == typeof(ulong?)) return (GetMethod<ulong?>(), GetConstantList(x => (ulong?)x));
 
-            if (type == typeof(float)) return (GetMethod<float>(), GetList(x => (float)x));
-            if (type == typeof(float?)) return (GetMethod<float?>(), GetList(x => (float?)x));
+            if (type == typeof(byte)) return (GetMethod<byte>(), GetConstantList(x => (byte)x));
+            if (type == typeof(byte?)) return (GetMethod<byte?>(), GetConstantList(x => (byte?)x));
 
-            if (type == typeof(double)) return (GetMethod<double>(), GetList(x => (double)x));
-            if (type == typeof(double?)) return (GetMethod<double?>(), GetList(x => (double?)x));
+            if (type == typeof(sbyte)) return (GetMethod<sbyte>(), GetConstantList(x => (sbyte)x));
+            if (type == typeof(sbyte?)) return (GetMethod<sbyte?>(), GetConstantList(x => (sbyte?)x));
 
-            if (type == typeof(decimal)) return (GetMethod<decimal>(), GetList(x => (decimal)x));
-            if (type == typeof(decimal?)) return (GetMethod<decimal?>(), GetList(x => (decimal?)x));
+            if (type == typeof(short)) return (GetMethod<short>(), GetConstantList(x => (short)x));
+            if (type == typeof(short?)) return (GetMethod<short?>(), GetConstantList(x => (short?)x));
+
+            if (type == typeof(ushort)) return (GetMethod<ushort>(), GetConstantList(x => (ushort)x));
+            if (type == typeof(ushort?)) return (GetMethod<ushort?>(), GetConstantList(x => (ushort?)x));
+
+            if (type == typeof(float)) return (GetMethod<float>(), GetConstantList(x => (float)x));
+            if (type == typeof(float?)) return (GetMethod<float?>(), GetConstantList(x => (float?)x));
+
+            if (type == typeof(double)) return (GetMethod<double>(), GetConstantList(x => (double)x));
+            if (type == typeof(double?)) return (GetMethod<double?>(), GetConstantList(x => (double?)x));
+
+            if (type == typeof(decimal)) return (GetMethod<decimal>(), GetConstantList(x => (decimal)x));
+            if (type == typeof(decimal?)) return (GetMethod<decimal?>(), GetConstantList(x => (decimal?)x));
 
             throw new NotImplementedException();
         }
+
 
         #endregion
     }
