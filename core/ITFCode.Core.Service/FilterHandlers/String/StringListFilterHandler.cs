@@ -18,13 +18,10 @@ namespace ITFCode.Core.Service.FilterHandlers
         public override Expression<Func<TEntity, bool>> Handle<TEntity>()
         {
             var item = Expression.Parameter(typeof(TEntity), "item");
-            var value = Expression.Property(item, Filter.PropertyName);
+            var value = GetProperty(item, Filter.PropertyName);
 
-            MethodInfo methodInfo;
-            ConstantExpression list;
-
-            methodInfo = typeof(List<string>).GetMethod("Contains", new Type[] { typeof(string) });
-            list = Expression.Constant(Filter.Values.Select(x => x).ToList());
+            MethodInfo methodInfo = typeof(List<string>).GetMethod("Contains", new Type[] { typeof(string) }) ?? throw new NullReferenceException();
+            ConstantExpression list = Expression.Constant(Filter.Values.Select(x => x).ToList());
 
             var body = Expression.Call(list, methodInfo, value);
 

@@ -17,8 +17,8 @@
 
         #region Numeric Types
 
-        public sbyte SbyteProperty { get; set; }
-        public sbyte? SbyteNullProperty { get; set; }
+        public sbyte SByteProperty { get; set; }
+        public sbyte? SByteNullProperty { get; set; }
         
         public byte ByteProperty { get; set; }
         public byte? ByteNullProperty { get; set; }
@@ -26,8 +26,8 @@
         public short ShortProperty { get; set; }
         public short? ShortNullProperty { get; set; }
         
-        public ushort UshortProperty { get; set; }
-        public ushort? UshortNullProperty { get; set; }
+        public ushort UShortProperty { get; set; }
+        public ushort? UShortNullProperty { get; set; }
         
         public int IntProperty { get; set; }
         public int? IntNullProperty { get; set; }
@@ -38,8 +38,8 @@
         public long LongProperty { get; set; }
         public long? LongNullProperty { get; set; }
         
-        public long ULongProperty { get; set; }
-        public long? ULongNullProperty { get; set; }
+        public ulong ULongProperty { get; set; }
+        public ulong? ULongNullProperty { get; set; }
    
         public uint NIntProperty { get; set; }
         public uint? NIntNullProperty { get; set; }

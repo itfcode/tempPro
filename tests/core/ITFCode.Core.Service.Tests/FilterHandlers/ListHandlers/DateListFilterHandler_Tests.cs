@@ -3,7 +3,7 @@ using ITFCode.Core.Service.FilterHandlers;
 using ITFCode.Core.Service.Tests.TestData;
 using System.Linq;
 
-namespace ITFCode.Core.Service.Tests.FilterHandlers
+namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
 {
     public class DateListFilterHandler_Tests : BaseValueFilterHandlerBase_Tests<DateListFilterHandler, DateListFilter>
     {

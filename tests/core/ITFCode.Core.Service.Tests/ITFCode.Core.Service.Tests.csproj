@@ -27,4 +27,9 @@
     <ProjectReference Include="..\..\..\core\ITFCode.Core.Service\ITFCode.Core.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="FilterHandlers\Numeric\" />
+    <Folder Include="FilterHandlers\RangeHandlers\" />
+  </ItemGroup>
+
 </Project>
