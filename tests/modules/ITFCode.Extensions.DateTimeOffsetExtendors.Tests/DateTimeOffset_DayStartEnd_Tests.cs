@@ -6,30 +6,26 @@ namespace ITFCode.Extensions.DateTimeOffsetExtendors.Tests
     {
         #region Day Start
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayStartEnd))]
+        [Theory, MemberData(nameof(TestDataFor_DayStartEnd))]
         public void DayStartAt_Test(DateTimeOffset date)
         {
             var days = new Random().Next(-365, 365);
             CheckValues(expected: date.AddDays(days), actual: date.DayStartAt(days));
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayStartEnd))]
+        [Theory, MemberData(nameof(TestDataFor_DayStartEnd))]
         public void DayStart_Test(DateTimeOffset date)
         {
             CheckValues(expected: date, actual: date.DayStart());
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayStartEnd))]
+        [Theory, MemberData(nameof(TestDataFor_DayStartEnd))]
         public void DayStartPrev_Test(DateTimeOffset date)
         {
             CheckValues(expected: date.AddDays(-1), actual: date.DayStartPrev());
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayStartEnd))]
+        [Theory, MemberData(nameof(TestDataFor_DayStartEnd))]
         public void DayStartNext_Test(DateTimeOffset date)
         {
             CheckValues(expected: date.AddDays(1), actual: date.DayStartNext());

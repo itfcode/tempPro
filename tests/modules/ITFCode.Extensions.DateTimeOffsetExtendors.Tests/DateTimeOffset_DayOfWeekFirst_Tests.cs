@@ -2,57 +2,71 @@ using ITFCode.Extensions.DateTimeOffsetExtendors.Tests.Base;
 
 namespace ITFCode.Extensions.DateTimeOffsetExtendors.Tests
 {
-    public class DateTimeOffsetExtensions_Tests : DateTimeOffset_Base_Tests
+    public partial class DateTimeOffsetExtensions_Tests
     {
         #region Tests 
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekFirst))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekFirst))]
         public void MondayFirst_Test(DateTimeOffset date)
         {
-            CheckValues(date.MondayFirst(),date, DayOfWeek.Monday);
+            var monday = date.MondayFirst();
+            Assert.Equal(DayOfWeek.Monday, monday.DayOfWeek);
+            Assert.True(monday.Day <= 7);
+            IsStartOfDay_Test(monday);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekFirst))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekFirst))]
         public void TuesdayFirst_Test(DateTimeOffset date)
         {
-            CheckValues(date.TuesdayFirst(), date, DayOfWeek.Tuesday);
+            var tuesday = date.TuesdayFirst();
+            Assert.Equal(DayOfWeek.Tuesday, tuesday.DayOfWeek);
+            Assert.True(tuesday.Day <= 7);
+            IsStartOfDay_Test(tuesday);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekFirst))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekFirst))]
         public void WednesdayFirst_Test(DateTimeOffset date)
         {
-            CheckValues(date.WednesdayFirst(), date, DayOfWeek.Wednesday);
+            var wednesday = date.WednesdayFirst();
+            Assert.Equal(DayOfWeek.Wednesday, wednesday.DayOfWeek);
+            Assert.True(wednesday.Day <= 7);
+            IsStartOfDay_Test(wednesday);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekFirst))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekFirst))]
         public void ThursdayFirst_Test(DateTimeOffset date)
         {
-            CheckValues(date.ThursdayFirst(), date, DayOfWeek.Thursday);
+            var thursday = date.ThursdayFirst();
+            Assert.Equal(DayOfWeek.Thursday, thursday.DayOfWeek);
+            Assert.True(thursday.Day <= 7);
+            IsStartOfDay_Test(thursday);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekFirst))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekFirst))]
         public void FridayFirst_Test(DateTimeOffset date)
         {
-            CheckValues(date.FridayFirst(), date, DayOfWeek.Friday);
+            var friday = date.FridayFirst();
+            Assert.Equal(DayOfWeek.Friday, friday.DayOfWeek);
+            Assert.True(friday.Day <= 7);
+            IsStartOfDay_Test(friday);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekFirst))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekFirst))]
         public void SaturdayFirst_Test(DateTimeOffset date)
         {
-            CheckValues(date.SaturdayFirst(), date, DayOfWeek.Saturday);
+            var saturday = date.SaturdayFirst();
+            Assert.Equal(DayOfWeek.Saturday, saturday.DayOfWeek);
+            Assert.True(saturday.Day <= 7);
+            IsStartOfDay_Test(saturday);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekFirst))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekFirst))]
         public void SundayFirst_Test(DateTimeOffset date)
         {
-            CheckValues(date.SundayFirst(), date, DayOfWeek.Sunday);
+            var sunday = date.SundayFirst();
+            Assert.Equal(DayOfWeek.Sunday, sunday.DayOfWeek);
+            Assert.True(sunday.Day <= 7);
+            IsStartOfDay_Test(sunday);
         }
 
         #endregion

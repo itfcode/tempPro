@@ -4,8 +4,7 @@
     {
         #region Tests
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekLast))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekLast))]
         public void MondayLast_Test(DateTime date)
         {
             var monday = date.MondayLast();
@@ -13,8 +12,7 @@
             Assert.True(monday.Day >= 22);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekLast))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekLast))]
         public void TuesdayLast_Test(DateTime date)
         {
             var tuesday = date.TuesdayLast();
@@ -22,8 +20,7 @@
             Assert.True(tuesday.Day >= 22);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekLast))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekLast))]
         public void WednesdayLast_Test(DateTime date)
         {
             var wednesday = date.WednesdayLast();
@@ -31,8 +28,7 @@
             Assert.True(wednesday.Day >= 22);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekLast))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekLast))]
         public void ThursdayLast_Test(DateTime date)
         {
             var thursday = date.ThursdayLast();
@@ -40,8 +36,7 @@
             Assert.True(thursday.Day >= 22);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekLast))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekLast))]
         public void FridayLast_Test(DateTime date)
         {
             var friday = date.FridayLast();
@@ -49,8 +44,7 @@
             Assert.True(friday.Day >= 22);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekLast))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekLast))]
         public void SaturdayLast_Test(DateTime date)
         {
             var saturday = date.SaturdayLast();
@@ -58,8 +52,7 @@
             Assert.True(saturday.Day >= 22);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataFor_DayOfWeekLast))]
+        [Theory, MemberData(nameof(TestDataFor_DayOfWeekLast))]
         public void SundayLast_Test(DateTime date)
         {
             var sunday = date.SundayLast();

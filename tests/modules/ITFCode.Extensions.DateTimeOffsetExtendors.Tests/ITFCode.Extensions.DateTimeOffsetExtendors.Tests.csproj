@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\modules\extensions\ITFCode.Extensions.DateTimeOffsetExtendors\ITFCode.Extensions.DateTimeOffsetExtendors.csproj" />
+    <ProjectReference Include="..\..\..\modules\ITFCode.Extensions.DateTimeOffsetExtendors\ITFCode.Extensions.DateTimeOffsetExtendors.csproj" />
   </ItemGroup>
 
 </Project>

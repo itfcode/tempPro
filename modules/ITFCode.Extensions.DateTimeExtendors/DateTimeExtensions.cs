@@ -11,6 +11,5 @@
 
         public static DateTime CopyTime(this DateTime self, DateTime source)
             => new(self.Year, self.Month, self.Day, source.Hour, source.Minute, source.Second);
-
     }
 }

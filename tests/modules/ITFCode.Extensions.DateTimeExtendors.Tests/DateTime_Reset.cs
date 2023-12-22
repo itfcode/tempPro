@@ -2,8 +2,7 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
 {
     public partial class DateTime_Reset
     {
-        [Theory]
-        [MemberData(nameof(TestDataForReset))]
+        [Theory, MemberData(nameof(TestDataForReset))]
         public void ResetMilliseconds_Test(DateTime sourceDate)
         {
             var targetDate = sourceDate.ResetMilliseconds();
@@ -17,8 +16,7 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
             Assert.Equal(0, targetDate.Millisecond);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataForReset))]
+        [Theory, MemberData(nameof(TestDataForReset))]
         public void ResetSeconds_Test(DateTime sourceDate)
         {
             var targetDate = sourceDate.ResetSeconds();
@@ -32,8 +30,7 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
             Assert.Equal(0, targetDate.Millisecond);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataForReset))]
+        [Theory, MemberData(nameof(TestDataForReset))]
         public void ResetMinutes_Test(DateTime sourceDate)
         {
             var targetDate = sourceDate.ResetMinutes();
@@ -47,8 +44,7 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
             Assert.Equal(0, targetDate.Millisecond);
         }
 
-        [Theory]
-        [MemberData(nameof(TestDataForReset))]
+        [Theory, MemberData(nameof(TestDataForReset))]
         public void ResetHours_Test(DateTime sourceDate)
         {
             var targetDate = sourceDate.ResetHours();

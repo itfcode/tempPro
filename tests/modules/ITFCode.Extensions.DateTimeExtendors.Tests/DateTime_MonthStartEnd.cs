@@ -4,20 +4,20 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
 {
     public partial class DateTime_Reset
     {
-        #region Tests 
+        #region Tests: MonthStart
 
         [Theory, MemberData(nameof(TestDataForMonthStartEnd))]
         public void MonthStartAt_Test(DateTime sourceDate)
         {
-            for (var i = 0; i < 10; i++)
+            for (var i = -5; i < 5; i++)
             {
-                var at = new Random().Next(-10, 10);
-                var targetDate = sourceDate.MonthStartAt(at);
+                var targetDate = sourceDate.MonthStartAt(i);
 
-                Assert.NotEqual(sourceDate.AddMonths(at), targetDate);
-                Assert.Equal(sourceDate.AddMonths(at).Year, targetDate.Year);
-                Assert.Equal(sourceDate.AddMonths(at).Month, targetDate.Month);
-                Assert.Equal(1, targetDate.Day);
+                Assert.NotEqual(sourceDate.AddMonths(i), targetDate);
+                Assert.Equal(sourceDate.AddMonths(i).Year, targetDate.Year);
+                Assert.Equal(sourceDate.AddMonths(i).Month, targetDate.Month);
+
+                IsStartOfMonth_Test(targetDate);
             }
         }
 
@@ -29,7 +29,8 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
             Assert.NotEqual(sourceDate, targetDate);
             Assert.Equal(sourceDate.Year, targetDate.Year);
             Assert.Equal(sourceDate.Month, targetDate.Month);
-            Assert.Equal(1, targetDate.Day);
+
+            IsStartOfMonth_Test(targetDate);
         }
 
         [Theory, MemberData(nameof(TestDataForMonthStartEnd))]
@@ -40,8 +41,25 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
             Assert.NotEqual(sourceDate.AddMonths(-1), targetDate);
             Assert.Equal(sourceDate.AddMonths(-1).Year, targetDate.Year);
             Assert.Equal(sourceDate.AddMonths(-1).Month, targetDate.Month);
-            Assert.Equal(1, targetDate.Day);
+
+            IsStartOfMonth_Test(targetDate);
         }
+
+        [Theory, MemberData(nameof(TestDataForMonthStartEnd))]
+        public void MonthStartNext_Test(DateTime sourceDate)
+        {
+            var targetDate = sourceDate.MonthStartNext();
+
+            Assert.NotEqual(sourceDate.AddMonths(1), targetDate);
+            Assert.Equal(sourceDate.AddMonths(1).Year, targetDate.Year);
+            Assert.Equal(sourceDate.AddMonths(1).Month, targetDate.Month);
+
+            IsStartOfMonth_Test(targetDate);
+        }
+
+        #endregion
+
+        #region Tests: MonthEnd
 
         [Theory, MemberData(nameof(TestDataForMonthStartEnd))]
         public void MonthEndAt_Test(DateTime sourceDate)
@@ -111,17 +129,6 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
             Assert.Equal(59, targetDate.Second);
         }
 
-        [Theory, MemberData(nameof(TestDataForMonthStartEnd))]
-        public void MonthStartNext_Test(DateTime sourceDate)
-        {
-            var targetDate = sourceDate.MonthStartNext();
-
-            Assert.NotEqual(sourceDate.AddMonths(1), targetDate);
-            Assert.Equal(sourceDate.AddMonths(1).Year, targetDate.Year);
-            Assert.Equal(sourceDate.AddMonths(1).Month, targetDate.Month);
-            Assert.Equal(1, targetDate.Day);
-        }
-
         #endregion
 
         #region Tests Data
@@ -142,6 +149,34 @@ namespace ITFCode.Extensions.DateTimeExtendors.Tests
             }
 
             return data;
+        }
+
+        #endregion
+
+        #region Private Methods 
+        private void IsStartOfDay_Test(DateTime sourceDate) 
+        {
+            Assert.Equal(0, sourceDate.Hour);
+            Assert.Equal(0, sourceDate.Minute);
+            Assert.Equal(0, sourceDate.Second);
+            Assert.Equal(0, sourceDate.Millisecond);
+            Assert.Equal(0, sourceDate.Microsecond);
+        }
+
+        private void IsEndOfDay_Test(DateTime sourceDate)
+        {
+            IsStartOfDay_Test(sourceDate.AddTicks(1));
+        }
+
+        private void IsStartOfMonth_Test(DateTime sourceDate) 
+        {
+            IsStartOfDay_Test(sourceDate);
+            Assert.Equal(1, sourceDate.Day);
+        }
+
+        private void IsEndOfMonth_Test(DateTime sourceDate)
+        {
+            IsStartOfMonth_Test(sourceDate.AddTicks(1));
         }
 
         #endregion

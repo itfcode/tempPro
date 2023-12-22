@@ -17,6 +17,8 @@
         public static DateTime ResetMinutes(this DateTime self, bool throwIfNull = true)
             => throw new NotImplementedException();
 
+        #region Private Methods 
+
         /// <summary>
         /// Helps to execute the method 
         /// </summary>
@@ -76,5 +78,7 @@
             else
                 return expression(date);
         }
+
+        #endregion
     }
 }
