@@ -34,8 +34,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Bool_Complex_Test(int itemCount, BoolFilterMatchMode matchMode, bool filterValue)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.BoolProperty)}";
-            static bool valueGetter(TestComplexClass x) => x.Property1.BoolProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.BoolProperty)}";
+            static bool valueGetter(TestComplexClass x) => x.PropertyA.BoolProperty;
             var items = GenerateComplexData(itemCount);
 
             var filter = new BoolValueFilter
@@ -78,8 +78,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_BoolNullable_Complex_Test(int itemCount, BoolFilterMatchMode matchMode, bool filterValue)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.BoolNullProperty)}";
-            static bool valueGetter(TestComplexClass x) => x.Property1.BoolNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.BoolNullProperty)}";
+            static bool valueGetter(TestComplexClass x) => x.PropertyA.BoolNullProperty ?? throw new ArgumentNullException();
             var items = GenerateComplexData(itemCount);
 
             var filter = new BoolValueFilter

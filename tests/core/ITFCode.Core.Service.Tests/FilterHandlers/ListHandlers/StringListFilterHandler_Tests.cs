@@ -30,8 +30,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_String_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.StringProperty)}";
-            static string valueGetter(TestComplexClass x) => x.Property1.StringProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.StringProperty)}";
+            static string valueGetter(TestComplexClass x) => x.PropertyA.StringProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -63,7 +63,7 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
 
         #region Private 
 
-        private void ExecuteTest<TClass>(ICollection<TClass> items, string propertyName, List<string> values, Func<TClass, string> valueGetter)
+        private static void ExecuteTest<TClass>(ICollection<TClass> items, string propertyName, List<string> values, Func<TClass, string> valueGetter)
         {
             var filter = new StringListFilter
             {

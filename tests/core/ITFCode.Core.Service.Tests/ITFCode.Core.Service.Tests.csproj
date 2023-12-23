@@ -28,6 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="FilterHandlers\Date\" />
+    <Folder Include="FilterHandlers\Guid\" />
     <Folder Include="FilterHandlers\Numeric\" />
     <Folder Include="FilterHandlers\RangeHandlers\" />
   </ItemGroup>

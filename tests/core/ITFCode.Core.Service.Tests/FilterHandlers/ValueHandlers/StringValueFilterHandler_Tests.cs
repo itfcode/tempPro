@@ -36,8 +36,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_String_Complex_Test(int itemCount, StringFilterMatchMode matchMode)
         {
-            static string valueGetter(TestComplexClass x) => x.Property1.StringProperty;
-            string propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.StringProperty)}";
+            static string valueGetter(TestComplexClass x) => x.PropertyA.StringProperty;
+            string propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.StringProperty)}";
             var items = GenerateComplexData(itemCount);
             var filterValue = itemCount > 0 ? valueGetter(items.First()) : _fixture.Create<string>();
 

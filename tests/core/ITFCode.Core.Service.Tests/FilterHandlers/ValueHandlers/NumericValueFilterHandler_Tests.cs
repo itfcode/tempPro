@@ -33,9 +33,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.SByteProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.SByteProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.SByteProperty);
+                valueGetter: x => x.PropertyA.SByteProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -43,9 +43,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.SByteNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.SByteNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.SByteNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.SByteNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -77,9 +77,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ByteProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ByteProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.ByteProperty);
+                valueGetter: x => x.PropertyA.ByteProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -87,9 +87,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ByteNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ByteNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.ByteNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.ByteNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -121,9 +121,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ShortProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ShortProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.ShortProperty);
+                valueGetter: x => x.PropertyA.ShortProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -131,9 +131,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ShortNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ShortNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.ShortNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.ShortNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -165,9 +165,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.UShortProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.UShortProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.UShortProperty);
+                valueGetter: x => x.PropertyA.UShortProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -175,9 +175,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.UShortNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.UShortNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.UShortNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.UShortNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -209,9 +209,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.IntProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.IntProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.IntProperty);
+                valueGetter: x => x.PropertyA.IntProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -219,9 +219,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.IntNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.IntNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.IntNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.IntNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -253,9 +253,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.UIntProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.UIntProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.UIntProperty);
+                valueGetter: x => x.PropertyA.UIntProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -263,9 +263,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.UIntNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.UIntNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.UIntNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.UIntNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -297,9 +297,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.LongProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.LongProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.LongProperty);
+                valueGetter: x => x.PropertyA.LongProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -307,9 +307,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.LongNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.LongNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.LongNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.LongNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -341,9 +341,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ULongProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ULongProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.ULongProperty);
+                valueGetter: x => x.PropertyA.ULongProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -351,9 +351,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ULongNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ULongNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.ULongNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.ULongNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -385,9 +385,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.FloatProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.FloatProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.FloatProperty);
+                valueGetter: x => x.PropertyA.FloatProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -395,9 +395,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.FloatNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.FloatNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.FloatNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.FloatNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -429,9 +429,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DoubleProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DoubleProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.DoubleProperty);
+                valueGetter: x => x.PropertyA.DoubleProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -439,9 +439,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DoubleNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DoubleNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.DoubleNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.DoubleNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion
@@ -473,9 +473,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DecimalProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DecimalProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.DecimalProperty);
+                valueGetter: x => x.PropertyA.DecimalProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -483,9 +483,9 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
         {
             ExecuteTest(
                 items: GenerateComplexData(itemCount),
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DecimalNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DecimalNullProperty)}",
                 matchMode: matchMode,
-                valueGetter: x => x.Property1.DecimalNullProperty ?? throw new ArgumentNullException());
+                valueGetter: x => x.PropertyA.DecimalNullProperty ?? throw new ArgumentNullException());
         }
 
         #endregion

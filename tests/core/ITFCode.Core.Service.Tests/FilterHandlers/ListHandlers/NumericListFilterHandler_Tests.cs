@@ -48,8 +48,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_SByte_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.SByteProperty)}";
-            static sbyte valueGetter(TestComplexClass x) => x.Property1.SByteProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.SByteProperty)}";
+            static sbyte valueGetter(TestComplexClass x) => x.PropertyA.SByteProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -66,8 +66,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_SByteNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.SByteNullProperty)}";
-            static sbyte valueGetter(TestComplexClass x) => x.Property1.SByteNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.SByteNullProperty)}";
+            static sbyte valueGetter(TestComplexClass x) => x.PropertyA.SByteNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -124,8 +124,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Byte_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ByteProperty)}";
-            static byte valueGetter(TestComplexClass x) => x.Property1.ByteProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ByteProperty)}";
+            static byte valueGetter(TestComplexClass x) => x.PropertyA.ByteProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -142,8 +142,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_ByteNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ByteNullProperty)}";
-            static byte valueGetter(TestComplexClass x) => x.Property1.ByteNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ByteNullProperty)}";
+            static byte valueGetter(TestComplexClass x) => x.PropertyA.ByteNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -199,8 +199,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Short_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ShortProperty)}";
-            static short valueGetter(TestComplexClass x) => x.Property1.ShortProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ShortProperty)}";
+            static short valueGetter(TestComplexClass x) => x.PropertyA.ShortProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -217,8 +217,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_ShortNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ShortNullProperty)}";
-            static short valueGetter(TestComplexClass x) => x.Property1.ShortNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ShortNullProperty)}";
+            static short valueGetter(TestComplexClass x) => x.PropertyA.ShortNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -275,8 +275,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_UShort_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.UShortProperty)}";
-            static ushort valueGetter(TestComplexClass x) => x.Property1.UShortProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.UShortProperty)}";
+            static ushort valueGetter(TestComplexClass x) => x.PropertyA.UShortProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -293,8 +293,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_UShortNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.UShortNullProperty)}";
-            static ushort valueGetter(TestComplexClass x) => x.Property1.UShortNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.UShortNullProperty)}";
+            static ushort valueGetter(TestComplexClass x) => x.PropertyA.UShortNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -351,8 +351,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Int_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.IntProperty)}";
-            static int valueGetter(TestComplexClass x) => x.Property1.IntProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.IntProperty)}";
+            static int valueGetter(TestComplexClass x) => x.PropertyA.IntProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -369,8 +369,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
 
         public void Handle_IntNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.IntNullProperty)}";
-            static int valueGetter(TestComplexClass x) => x.Property1.IntNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.IntNullProperty)}";
+            static int valueGetter(TestComplexClass x) => x.PropertyA.IntNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -427,8 +427,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Uint_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.UIntProperty)}";
-            static uint valueGetter(TestComplexClass x) => x.Property1.UIntProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.UIntProperty)}";
+            static uint valueGetter(TestComplexClass x) => x.PropertyA.UIntProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -445,8 +445,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_UintNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.UIntNullProperty)}";
-            static uint valueGetter(TestComplexClass x) => x.Property1.UIntNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.UIntNullProperty)}";
+            static uint valueGetter(TestComplexClass x) => x.PropertyA.UIntNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -503,8 +503,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Long_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.LongProperty)}";
-            static long valueGetter(TestComplexClass x) => x.Property1.LongProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.LongProperty)}";
+            static long valueGetter(TestComplexClass x) => x.PropertyA.LongProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -521,8 +521,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_LongNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.LongNullProperty)}";
-            static long valueGetter(TestComplexClass x) => x.Property1.LongNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.LongNullProperty)}";
+            static long valueGetter(TestComplexClass x) => x.PropertyA.LongNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -579,8 +579,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_ULong_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ULongProperty)}";
-            static ulong valueGetter(TestComplexClass x) => x.Property1.ULongProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ULongProperty)}";
+            static ulong valueGetter(TestComplexClass x) => x.PropertyA.ULongProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -597,8 +597,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_ULongNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.ULongNullProperty)}";
-            static ulong valueGetter(TestComplexClass x) => x.Property1.ULongNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.ULongNullProperty)}";
+            static ulong valueGetter(TestComplexClass x) => x.PropertyA.ULongNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -655,8 +655,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Decimal_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DecimalProperty)}";
-            static decimal valueGetter(TestComplexClass x) => x.Property1.DecimalProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DecimalProperty)}";
+            static decimal valueGetter(TestComplexClass x) => x.PropertyA.DecimalProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -673,8 +673,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_DecimalNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DecimalNullProperty)}";
-            static decimal valueGetter(TestComplexClass x) => x.Property1.DecimalNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DecimalNullProperty)}";
+            static decimal valueGetter(TestComplexClass x) => x.PropertyA.DecimalNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -731,8 +731,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Float_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.FloatProperty)}";
-            static float valueGetter(TestComplexClass x) => x.Property1.FloatProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.FloatProperty)}";
+            static float valueGetter(TestComplexClass x) => x.PropertyA.FloatProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -749,8 +749,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_FloatNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.FloatNullProperty)}";
-            static float valueGetter(TestComplexClass x) => x.Property1.FloatNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.FloatNullProperty)}";
+            static float valueGetter(TestComplexClass x) => x.PropertyA.FloatNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -807,8 +807,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_Double_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DoubleProperty)}";
-            static double valueGetter(TestComplexClass x) => x.Property1.DoubleProperty;
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DoubleProperty)}";
+            static double valueGetter(TestComplexClass x) => x.PropertyA.DoubleProperty;
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0
@@ -825,8 +825,8 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         [Theory, MemberData(nameof(TestData))]
         public void Handle_DoubleNull_Complex_Test(int itemCount)
         {
-            var propertyName = $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DoubleNullProperty)}";
-            static double valueGetter(TestComplexClass x) => x.Property1.DoubleNullProperty ?? throw new ArgumentNullException();
+            var propertyName = $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DoubleNullProperty)}";
+            static double valueGetter(TestComplexClass x) => x.PropertyA.DoubleNullProperty ?? throw new ArgumentNullException();
 
             var complexItems = GenerateComplexData(itemCount);
             var complexValues = complexItems.Count > 0

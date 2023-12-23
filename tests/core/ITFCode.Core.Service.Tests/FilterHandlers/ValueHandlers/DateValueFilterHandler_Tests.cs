@@ -2,12 +2,37 @@
 using ITFCode.Core.DTO.FilterOptions;
 using ITFCode.Core.Service.FilterHandlers;
 using ITFCode.Core.Service.Tests.TestData;
+using System.Linq.Expressions;
 
-namespace ITFCode.Core.Service.Tests.FilterHandlers
+namespace ITFCode.Core.Service.Tests.FilterHandlers.ValueHandlers
 {
     public class DateValueFilterHandler_Tests : BaseValueFilterHandlerBase_Tests<DateValueFilterHandler, DateValueFilter>
     {
         #region Facts
+
+        [Theory, MemberData(nameof(TestData))]
+        public void Handle_DateTime_Simple_Test(int itemCount, DateFilterMatchMode matchMode)
+        {
+            static DateTimeOffset valueGetter(TestSimpleClass x) => x.DateTimeProperty;
+            string propertyName = $"{nameof(TestSimpleClass.DateTimeProperty)}";
+            var items = GenerateSimpleData(itemCount);
+            var filterValue = itemCount > 0 ? valueGetter(items.First()) : _fixture.Create<DateTimeOffset>();
+
+            var filter = new DateValueFilter
+            {
+                PropertyName = propertyName,
+                Value = filterValue,
+                MatchMode = matchMode
+            };
+
+            RunTest(
+                items: items,
+                predicate: new DateValueFilterHandler(filter).Handle<TestSimpleClass>(),
+                filterValue: filterValue,
+                matchMode: matchMode,
+                valueGetter: valueGetter);
+        }
+
 
         [Theory, MemberData(nameof(TestData))]
         public void Handle_DateTime_Test(int itemCount, DateFilterMatchMode matchMode)
@@ -23,14 +48,14 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
                 valueGetter: x => new DateTimeOffset(x.DateTimeProperty));
 
             var complexItems = GenerateComplexData(itemCount);
-            var complexValue = complexItems.Count > 0 ? complexItems.First().Property1.DateTimeProperty : _fixture.Create<DateTimeOffset>();
+            var complexValue = complexItems.Count > 0 ? complexItems.First().PropertyA.DateTimeProperty : _fixture.Create<DateTimeOffset>();
 
             ExecuteTest(
                 items: complexItems,
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DateTimeProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DateTimeProperty)}",
                 matchMode: matchMode,
                 value: complexValue,
-                valueGetter: x => new DateTimeOffset(x.Property1.DateTimeProperty));
+                valueGetter: x => new DateTimeOffset(x.PropertyA.DateTimeProperty));
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -47,14 +72,14 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
                 valueGetter: x => new DateTimeOffset(x.DateTimeNullProperty.Value));
 
             var complexItems = GenerateComplexData(itemCount);
-            var complexValue = complexItems.Count > 0 ? complexItems.First().Property1.DateTimeNullProperty.Value : _fixture.Create<DateTimeOffset>();
+            var complexValue = complexItems.Count > 0 ? complexItems.First().PropertyA.DateTimeNullProperty.Value : _fixture.Create<DateTimeOffset>();
 
             ExecuteTest(
                 items: complexItems,
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DateTimeProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DateTimeProperty)}",
                 matchMode: matchMode,
                 value: complexValue,
-                valueGetter: x => new DateTimeOffset(x.Property1.DateTimeProperty));
+                valueGetter: x => new DateTimeOffset(x.PropertyA.DateTimeProperty));
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -71,14 +96,14 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
                 valueGetter: x => x.DateTimeOffsetProperty);
 
             var complexItems = GenerateComplexData(itemCount);
-            var complexValue = complexItems.Count > 0 ? complexItems.First().Property1.DateTimeOffsetProperty : _fixture.Create<DateTimeOffset>();
+            var complexValue = complexItems.Count > 0 ? complexItems.First().PropertyA.DateTimeOffsetProperty : _fixture.Create<DateTimeOffset>();
 
             ExecuteTest(
                 items: complexItems,
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DateTimeOffsetProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DateTimeOffsetProperty)}",
                 matchMode: matchMode,
                 value: complexValue,
-                valueGetter: x => x.Property1.DateTimeOffsetProperty);
+                valueGetter: x => x.PropertyA.DateTimeOffsetProperty);
         }
 
         [Theory, MemberData(nameof(TestData))]
@@ -95,14 +120,14 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
                 valueGetter: x => x.DateTimeOffsetNullProperty.Value);
 
             var complexItems = GenerateComplexData(itemCount);
-            var complexValue = complexItems.Count > 0 ? complexItems.First().Property1.DateTimeOffsetNullProperty.Value : _fixture.Create<DateTimeOffset>();
+            var complexValue = complexItems.Count > 0 ? complexItems.First().PropertyA.DateTimeOffsetNullProperty.Value : _fixture.Create<DateTimeOffset>();
 
             ExecuteTest(
                 items: complexItems,
-                propertyName: $"{nameof(TestComplexClass.Property1)}.{nameof(TestSimpleClass.DateTimeOffsetNullProperty)}",
+                propertyName: $"{nameof(TestComplexClass.PropertyA)}.{nameof(TestSimpleClass.DateTimeOffsetNullProperty)}",
                 matchMode: matchMode,
                 value: complexValue,
-                valueGetter: x => x.Property1.DateTimeOffsetNullProperty.Value);
+                valueGetter: x => x.PropertyA.DateTimeOffsetNullProperty.Value);
         }
 
         #endregion
@@ -124,6 +149,19 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers
         #endregion
 
         #region Private Methods 
+
+        private void RunTest<TClass>(ICollection<TClass> items, Expression<Func<TClass, bool>> predicate,
+            DateTimeOffset filterValue, DateFilterMatchMode matchMode, Func<TClass, DateTimeOffset> valueGetter) where TClass : class
+        {
+            var filtered = items.AsQueryable()
+                .Where(predicate)
+                .ToList();
+
+            var expectedCount = items.Count(x => CheckValueComparasion(valueGetter(x), filterValue, matchMode));
+
+            Assert.Equal(expectedCount, filtered.Count);
+            Assert.True(filtered.All(x => CheckValueComparasion(valueGetter(x), filterValue, matchMode)));
+        }
 
         private void ExecuteTest<TClass>(ICollection<TClass> items, string propertyName, DateFilterMatchMode matchMode, DateTimeOffset value, Func<TClass, DateTimeOffset> valueGetter)
         {
