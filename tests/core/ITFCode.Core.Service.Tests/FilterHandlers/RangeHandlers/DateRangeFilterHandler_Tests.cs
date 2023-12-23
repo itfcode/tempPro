@@ -2,7 +2,7 @@
 using ITFCode.Core.Service.FilterHandlers;
 using ITFCode.Core.Service.Tests.TestData;
 
-namespace ITFCode.Core.Service.Tests.FilterHandlers
+namespace ITFCode.Core.Service.Tests.FilterHandlers.RangeHandlers
 {
     public class DateRangeFilterHandler_Tests : BaseValueFilterHandlerBase_Tests<DateRangeFilterHandler, DateRangeFilter>
     {
