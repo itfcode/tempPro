@@ -5,7 +5,7 @@ using ITFCode.Core.Service.Tests.TestData;
 
 namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
 {
-    public class StringListFilterHandler_Tests : BaseValueFilterHandlerBase_Tests<StringListFilterHandler, StringListFilter>
+    public class StringListFilterHandler_Tests : BaseListFilterHandlerBase_Tests<StringListFilterHandler, StringListFilter>
     {
         #region Facts
 
@@ -50,11 +50,6 @@ namespace ITFCode.Core.Service.Tests.FilterHandlers.ListHandlers
         #region Test Data
 
         public static IEnumerable<object[]> TestData =>
-            (new int[] { STEP_0, STEP_1, STEP_2, STEP_4 })
-            .Select(y => new object[] { y })
-            .ToList();
-
-        public static IEnumerable<object[]> TestData1 =>
             (new int[] { STEP_0, STEP_1, STEP_2, STEP_4 })
             .Select(y => new object[] { y })
             .ToList();

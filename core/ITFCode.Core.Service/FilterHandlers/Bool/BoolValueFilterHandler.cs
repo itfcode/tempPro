@@ -27,5 +27,4 @@ namespace ITFCode.Core.Service.FilterHandlers
 
         #endregion
     }
-
 }
